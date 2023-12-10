@@ -3,7 +3,7 @@ pipeline{
   stages{
    stage('Git Checkout'){
       steps{
-        echo 'Checking out from the branch env.BRANCH_NAME'
+        echo 'Checking out from the branch' + env.BRANCH_NAME
         git branch: 'main', changelog: false, credentialsId: 'a77b18a5-7558-4a34-8338-a31ceb2babe9', poll: false, url: 'https://github.com/vistaar1999/TerraformJenkins'
   }
 }

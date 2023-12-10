@@ -12,7 +12,7 @@ pipeline{
 }
    stage("Terraform Init"){
       steps{
-      sh label: '', script: 'terraform init'
+      bat 'terraform init'
 }
 }
 }

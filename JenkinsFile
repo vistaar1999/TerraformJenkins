@@ -1,7 +1,7 @@
 pipeline{
   agent any
- tools {
-  terraform 'Terraform'
+tools {
+  terraform 'Terraform_Linux'
 }
   stages{
    stage('Git Checkout'){
@@ -12,7 +12,7 @@ pipeline{
 }
    stage("Terraform Init"){
       steps{
-        bat "terraform init"
+        sh "terraform init"
 }
 }
 

@@ -1,3 +1,5 @@
+properties([parameters([choice(choices: ['', 'init', 'plan', 'apply'], description: 'Choose the terraform options', name: 'Terraform Options')])])
+
 pipeline{
   agent any
 tools {

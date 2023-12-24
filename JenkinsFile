@@ -14,10 +14,11 @@ tools {
 }
    stage("Terraform Init"){
       steps{
-        if ( params.TerraformOptions == 'init') {
-        bat "terraform init"
-}
-}
+        script{
+          if ( params.TerraformOptions == 'init') {
+          bat "terraform init"
+    }  
+  }
 }
 }
 }

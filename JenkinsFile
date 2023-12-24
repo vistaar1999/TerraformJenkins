@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: ['', 'init', 'plan', 'apply'], description: 'Choose the terraform options', name: 'Terraform Options')])])
+properties([parameters([choice(choices: ['', 'init', 'plan', 'apply'], description: 'Choose the terraform options', name: 'TerraformOptions')])])
 
 pipeline{
   agent any
@@ -14,19 +14,9 @@ tools {
 }
    stage("Terraform Init"){
       steps{
+        if %params.TerraformOptions% == 'init'(
         bat "terraform init"
-}
-}
-
-   stage("Terraform Plan"){
-      steps{
-        bat "terraform plan"
-}
-}
-
-   stage("Terraform Apply"){
-      steps{
-        bat "terraform apply -auto-approve"
+)
 }
 }
 }

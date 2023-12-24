@@ -16,7 +16,7 @@ tools {
       steps{
         script{
           if ( params.TerraformOptions == 'init') {
-          bat "terraform init"
+          bat "terraform init terraform plan"
     }  
   }
 }

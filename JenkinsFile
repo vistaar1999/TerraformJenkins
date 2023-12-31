@@ -17,10 +17,8 @@ tools {
            bat "terraform init"
         script{
           if ( params.RUN_TYPE == 'plan') {
-            bat "terraform plan"
-    }
-          else if ( params.RUN_TYPE == 'apply') {
-            bat "terraform apply --auto-approve"
+            bat "terraform plan -out=tfplan"
+            bat "terraform apply tfplan --auto-approve"
     }
           else if ( params.RUN_TYPE == 'destroy') {
             bat "terraform destroy --auto-approve"

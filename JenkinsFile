@@ -14,9 +14,9 @@ tools {
 }
    stage("Resource Creation"){
       steps{
-           env.RUN_TYPE="${params.RUN_TYPE}"
            bat "terraform init"
         script{
+           env.RUN_TYPE="${params.RUN_TYPE}"
            sh '''#!/bin/bash
            set -e
            chmod +x *.sh

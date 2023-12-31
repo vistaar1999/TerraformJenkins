@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: ['', 'init','apply','destroy'], description: 'Choose the terraform options', name: 'RUN_TYPE')])])
+properties([parameters([choice(choices: ['','apply','destroy'], description: 'Choose the terraform options', name: 'RUN_TYPE')])])
 
 pipeline{
   agent any
@@ -12,11 +12,11 @@ tools {
         git branch: 'main', changelog: false, credentialsId: 'a77b18a5-7558-4a34-8338-a31ceb2babe9', poll: false, url: 'https://github.com/vistaar1999/TerraformJenkins'
   }
 }
-   stage("Terraform Plan"){
+   stage("Resource Creation"){
       steps{
            bat "terraform init"
         script{
-          if ( params.RUN_TYPE == 'plan') {
+          if ( params.RUN_TYPE == 'apply') {
             bat "terraform plan -out=tfplan"
             bat "terraform apply tfplan --auto-approve"
     }

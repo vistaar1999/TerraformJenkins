@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: ['', 'init','apply'], description: 'Choose the terraform options', name: 'TerraformOptions')])])
+properties([parameters([choice(choices: ['', 'init','apply','destroy'], description: 'Choose the terraform options', name: 'RUN_TYPE')])])
 
 pipeline{
   agent any
@@ -15,13 +15,16 @@ tools {
    stage("Terraform Init"){
       steps{
         script{
-          if ( params.TerraformOptions == 'init') {
+          if ( params.RUN_TYPE == 'init') {
             bat "terraform init"
             bat "terraform plan"
     }
-          else if ( params.TerraformOptions == 'apply') {
+          else if ( params.RUN_TYPE == 'apply') {
             bat "terraform apply"
     }
+          else if ( params.RUN_TYPE == 'destroy') {
+            bat "terraform destroy"
+    }  
           else {
             echo "Select a correct option"
      }

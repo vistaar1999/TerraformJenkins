@@ -12,21 +12,18 @@ tools {
         git branch: 'main', changelog: false, credentialsId: 'a77b18a5-7558-4a34-8338-a31ceb2babe9', poll: false, url: 'https://github.com/vistaar1999/TerraformJenkins'
   }
 }
+   stage("Initilaization"){
+      env.RUN_TYPE="${params.RUN_TYPE}
+   }
    stage("Resource Creation"){
       steps{
            bat "terraform init"
         script{
-          if ( params.RUN_TYPE == 'apply') {
-            bat "terraform plan -out=tfplan"
-            bat "terraform show tfplan"
-            bat "terraform apply tfplan"
-    }
-          else if ( params.RUN_TYPE == 'destroy') {
-            bat "terraform destroy --auto-approve"
-    }  
-          else {
-            echo "Select a correct option"
-     }
+           sh '''#!/bin/bash
+           set -e
+           chmod +x *.sh
+           ./test.sh $RUN_TYPE
+   '''
   }
 }
 }

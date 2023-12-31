@@ -20,7 +20,7 @@ tools {
             bat "terraform plan"
     }
           else if ( params.RUN_TYPE == 'apply') {
-            bat "terraform apply"
+            bat "terraform apply --auto-approve"
     }
           else if ( params.RUN_TYPE == 'destroy') {
             bat "terraform destroy --auto-approve"

@@ -13,7 +13,9 @@ tools {
   }
 }
    stage("Initilaization"){
+        steps{
       env.RUN_TYPE="${params.RUN_TYPE}"
+      }
    }
    stage("Resource Creation"){
       steps{

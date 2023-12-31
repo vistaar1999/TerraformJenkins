@@ -17,11 +17,7 @@ tools {
            bat "terraform init"
         script{
            env.RUN_TYPE="${params.RUN_TYPE}"
-           sh '''#!/bin/bash
-           set -e
-           chmod +x *.sh
-           ./testScript.sh $RUN_TYPE
-   '''
+           sh './testScript.sh $RUN_TYPE'
   }
 }
 }

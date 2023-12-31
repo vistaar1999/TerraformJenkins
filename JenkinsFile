@@ -22,7 +22,7 @@ tools {
            sh '''#!/bin/bash
            set -e
            chmod +x *.sh
-           ./test.sh $RUN_TYPE
+           ./testScript.sh $RUN_TYPE
    '''
   }
 }
